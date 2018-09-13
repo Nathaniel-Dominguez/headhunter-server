@@ -12,10 +12,10 @@ router.post('/', (req, res) => {
 		db.Task.create(e)
     .then((createdTask) => {
       console.log('created task', createdTask);
-    	res.send({ task: createdTask })
     })
     .catch((err) => {
       console.log('err', err);
       res.status(500).send('Could not create task in DB');
     });
+  res.send({ tasks: req.body });
 });
