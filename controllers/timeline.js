@@ -4,8 +4,17 @@ const mongoose = require('mongoose');
 const db = require('../models');
 const router = express.Router();
 
-//pull data from data base for timeline
-//HOW DO I DO THISS???????
+//pull data from database for timeline
+router.post('/info', function(req, res) {
+  db.Task.find()
+  .then(function(tasks){
+    res.send({ tasks: tasks });
+  })
+  .catch(function(err){
+    console.log(err);
+    res.send({ user: null, error: 'server error' });
+  });
+});
 
 //post route for array of oblects for timeline
 router.post('/', (req, res) => {
