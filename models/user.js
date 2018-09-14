@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,7 +21,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
     maxlength: 99
-  }
+  },
+  task: [{
+    type: ObjectId,
+    ref: 'Task'
+  }]
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user
